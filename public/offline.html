@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Offline · FollowThrough</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 48px 20px;
+         background: #f6f7f9; color: #1c2430; line-height: 1.5; }
+  @media (prefers-color-scheme: dark) { body { background: #0f141a; color: #e6eaef; } .card { background: #161c24; border-color: #2b3542; } }
+  .card { max-width: 420px; margin: 0 auto; background: #fff; border: 1px solid #dde1e7; border-radius: 12px; padding: 24px; }
+  h1 { font-size: 1.25rem; margin: 0 0 8px; }
+  button { margin-top: 16px; font: inherit; padding: 10px 16px; border-radius: 8px; border: 0; background: #1f5f7a; color: #fff; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>You're offline</h1>
+    <p>FollowThrough needs a connection to load and save your tasks. Nothing is stored on this device, so nothing you
+       type while offline is saved.</p>
+    <p>Reminders are scheduled on the server and keep working while this device is offline; they arrive when it reconnects.</p>
+    <button onclick="location.reload()">Try again</button>
+  </div>
+</body>
+</html>

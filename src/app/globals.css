@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* Calm, restrained palette. Tokens switch with the OS colour scheme. */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #f0f2f5;
+  --border: #dde1e7;
+  --text: #1c2430;
+  --muted: #5b6676;
+  --accent: #1f5f7a;
+  --accent-hover: #184c62;
+  --accent-soft: #e3eff4;
+  --accent-contrast: #ffffff;
+  --danger: #b42318;
+  --danger-soft: #fdecea;
+  --warn: #8a5300;
+  --warn-soft: #fff4e0;
+  --ok: #1d6b3a;
+  --ok-soft: #e6f4ea;
+  --focus: #2f80ed;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f141a;
+    --surface: #161c24;
+    --surface-2: #1d2530;
+    --border: #2b3542;
+    --text: #e6eaef;
+    --muted: #9aa6b5;
+    --accent: #6fb3cf;
+    --accent-hover: #8cc5dc;
+    --accent-soft: #19323d;
+    --accent-contrast: #0b1a21;
+    --danger: #f2877d;
+    --danger-soft: #3a1c1a;
+    --warn: #f0b85a;
+    --warn-soft: #3a2c13;
+    --ok: #79c995;
+    --ok-soft: #173023;
+    --focus: #7db3ff;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+dialog::backdrop {
+  background: rgb(10 15 20 / 0.45);
+}
+
+dialog {
+  color: var(--text);
+}
+
+/* Respect users who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
