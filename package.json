@@ -18,6 +18,7 @@
     "icons": "node scripts/generate-icons.mjs"
   },
   "dependencies": {
+    "@supabase/server": "^1.9.2",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.118.0",
     "@tailwindcss/postcss": "^4.3.3",
