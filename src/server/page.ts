@@ -12,19 +12,11 @@ export interface PageContext {
   profile: ProfileView;
 }
 
-/** Load data for a signed-in page inside one RLS-scoped, read-only transaction. */
+/** Load data for a signed-in page inside an RLS-scoped transaction. */
 export async function loadPage<T>(fn: (ctx: PageContext) => Promise<T>): Promise<T> {
   const user = await requireUser();
   const sql = db();
-
-  // The fallback profile creation is a write and must happen before opening
-  // the read-only transaction used to render the page.
-  await withUser(sql, user.id, async (tx) => {
-    await getProfile(tx, user.id);
-  });
-
   return withUser(sql, user.id, async (tx) => {
-    await tx`set transaction read only`;
     const profile = await getProfile(tx, user.id);
     return fn({ tx, userId: user.id, email: user.email, now: new Date(), profile });
   });

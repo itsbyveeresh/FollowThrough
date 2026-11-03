@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
   cacheComponents: false,
   poweredByHeader: false,
   serverExternalPackages: ["web-push"],
+  experimental: {
+    cpus: 1,
+  },
   async headers() {
     return [
       { source: "/(.*)", headers: securityHeaders },
