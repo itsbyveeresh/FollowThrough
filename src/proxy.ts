@@ -12,9 +12,10 @@ export async function proxy(request: NextRequest) {
   const env = process.env as Record<string, string | undefined>;
   const url = env["NEXT_PUBLIC_SUPABASE_URL"];
   const key = env["NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY"] ?? env["NEXT_PUBLIC_SUPABASE_ANON_KEY"];
+  const dbUrl = env["DATABASE_URL"];
   const path = request.nextUrl.pathname;
 
-  if (!url || !key) {
+  if (!url || !key || !dbUrl) {
     if (path === "/setup" || path.startsWith("/api/")) return NextResponse.next();
     return NextResponse.rewrite(new URL("/setup", request.url));
   }
